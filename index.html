@@ -11,10 +11,27 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js" />
 
 <script>
-var ul = document.querySelector('ul');
-for (var i = ul.children.length; i >= 0; i--) {
-    ul.appendChild(ul.children[Math.random() * i | 0]);
-}
+$(document).ready(function(){
+      $('ul').each(function(){
+            // get current ul
+            var $ul = $(this);
+            // get array of list items in current ul
+            var $liArr = $ul.children('li');
+            // sort array of list items in current ul randomly
+            $liArr.sort(function(a,b){
+                  // Get a random number between 0 and 10
+                  var temp = parseInt( Math.random()*10 );
+                  // Get 1 or 0, whether temp is odd or even
+                  var isOddOrEven = temp%2;
+                  // Get +1 or -1, whether temp greater or smaller than 5
+                  var isPosOrNeg = temp>5 ? 1 : -1;
+                  // Return -1, 0, or +1
+                  return( isOddOrEven*isPosOrNeg );
+            })
+            // append list items to ul
+            .appendTo($ul);            
+      });
+});
 </script>
 
   </head>
@@ -27,12 +44,14 @@ for (var i = ul.children.length; i >= 0; i--) {
 
     <section class="main-content">
     
-<h3>all babe</h3>
+<h3>all babes</h3>
 
 <ul>
   <li><a href="http://www.ilovestvincent.com/">St. Vincent</a></li>
   <li><a href="http://the-toast.net/author/mallory-ortberg/">Mallory Ortberg</a></li>
   <li><a href="http://roxanegay.com">Roxane Gay</a></li>
+  <li><a href="babe 4">Babe 4</a></li>
+  <li><a href="babe 5">Babe 5</a></li>
 </ul>
 
       <footer class="site-footer">
